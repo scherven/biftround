@@ -1,0 +1,138 @@
+.deck-viewer-container {
+  min-height: 100vh;
+  background: #f5f7fa;
+}
+
+.deck-viewer-header {
+  background: white;
+  padding: 20px 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-link {
+  color: #667eea;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.deck-viewer-header h1 {
+  margin: 0 0 5px 0;
+  color: #333;
+  font-size: 28px;
+}
+
+.card-count {
+  margin: 0;
+  color: #999;
+  font-size: 14px;
+}
+
+.deck-viewer-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.deck-viewer-actions {
+  margin-bottom: 30px;
+}
+
+.new-card-form {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.new-card-form .form-group {
+  margin-bottom: 20px;
+}
+
+.new-card-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #333;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.new-card-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.new-card-form textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.error-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.error-state h2 {
+  margin: 0 0 20px 0;
+  color: #666;
+}
+
+.cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-item {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-number {
+  color: #667eea;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-side {
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.card-side strong {
+  color: #667eea;
+  margin-right: 8px;
+}
