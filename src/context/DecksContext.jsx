@@ -25,15 +25,14 @@ export const DecksProvider = ({ children }) => {
     return newDeck;
   };
 
-  const addCardToDeck = (deckId, question, answer) => {
+  const addCardToDeck = (deckId, cardData) => {
     setDecks(decks.map(deck => {
       if (deck.id === deckId) {
         return {
           ...deck,
           cards: [...deck.cards, {
             id: Date.now().toString(),
-            question,
-            answer,
+            ...cardData,
             createdAt: new Date().toISOString()
           }]
         };

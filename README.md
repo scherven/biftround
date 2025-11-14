@@ -1,13 +1,18 @@
-# Biftround Flashcards
+# Biftround Card Decks
 
-A modern, interactive flashcard application built with React and Vite for creating, managing, and testing flashcard decks.
+A trading card deck builder inspired by Magic: The Gathering, built with React and Vite. Create and manage collectible card decks with custom cards featuring mana costs, types, abilities, and power/toughness.
 
 ## Features
 
 - 🔐 **Authentication**: Login with username/password or Google OAuth
-- 📚 **Deck Management**: Create, view, and delete flashcard decks
-- 📝 **Card Creation**: Add question/answer pairs to your decks
-- 🎯 **Interactive Testing**: Test your knowledge with flip-able flashcards
+- 📚 **Deck Management**: Create, view, and delete card decks
+- 🃏 **Card Creation**: Design custom cards with MTG-style attributes
+  - Card name and mana cost
+  - Card type (Creature, Instant, Sorcery, etc.)
+  - Card text and abilities
+  - Power/Toughness for creatures
+  - Rarity levels (Common, Uncommon, Rare, Mythic Rare)
+- 🎨 **Card Gallery**: Browse through your cards in a visual gallery
 - 💾 **Data Persistence**: All data stored in browser localStorage
 
 ## Getting Started
@@ -53,21 +58,32 @@ The application will be available at `http://localhost:5173/`
 
 ### Creating Decks
 1. Click "**+ New Deck**" on the Decks page
-2. Enter a deck name
+2. Enter a deck name (e.g., "Blue Control", "Red Aggro")
 3. Click "**Create Deck**"
 
 ### Adding Cards
 1. Click "**View Deck**" on a deck
 2. Click "**+ Add Card**"
-3. Enter a question and answer
-4. Click "**Add Card**"
+3. Fill in card details:
+   - **Card Name**: The name of your card
+   - **Mana Cost**: e.g., "2R", "1UU", "3GG"
+   - **Card Type**: e.g., "Creature - Dragon", "Instant", "Sorcery"
+   - **Rarity**: Common, Uncommon, Rare, or Mythic Rare
+   - **Power/Toughness**: (for creatures only)
+   - **Card Text**: Abilities, effects, or flavor text
+4. Click "**Add Card to Deck**"
 
-### Testing Your Knowledge
-1. Click "**Test**" on a deck card or "**Test This Deck**" in the deck viewer
-2. View the question
-3. Click "**Show Answer**" or click the card to flip it
-4. Navigate through cards with Previous/Next buttons
-5. Complete the test to see your progress
+### Viewing Your Collection
+1. Click "**Card Gallery**" on a deck card or "**View Card Gallery**" in the deck viewer
+2. Browse through your cards one at a time
+3. Use Previous/Next buttons to navigate
+4. Cards display with MTG-style formatting including:
+   - Card name and mana cost
+   - Card artwork placeholder
+   - Type line
+   - Abilities text box
+   - Power/Toughness (for creatures)
+   - Rarity indicator
 
 ## Configuration
 
@@ -103,13 +119,24 @@ src/
 │   ├── Login.jsx
 │   ├── Decks.jsx
 │   ├── DeckViewer.jsx
-│   └── Test.jsx
+│   └── Test.jsx (Card Gallery)
 └── styles/           # CSS files
     ├── Login.css
     ├── Decks.css
     ├── DeckViewer.css
     └── Test.css
 ```
+
+## Card Attributes
+
+Cards support the following MTG-inspired attributes:
+
+- **Name**: The card's name
+- **Mana Cost**: Mana required to cast (e.g., "3RR", "2UU")
+- **Type**: Card type line (e.g., "Creature - Dragon", "Instant", "Enchantment - Aura")
+- **Text**: Card abilities, effects, and flavor text
+- **Power/Toughness**: For creature cards (e.g., "3/3", "*/4")
+- **Rarity**: Common, Uncommon, Rare, or Mythic Rare
 
 ## License
 

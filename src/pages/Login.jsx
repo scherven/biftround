@@ -40,8 +40,8 @@ function Login() {
   return (
     <div className="login-container">
       <div className="login-box">
-        <h1>Biftround Flashcards</h1>
-        <p className="login-subtitle">Sign in to manage your flashcard decks</p>
+        <h1>Biftround Card Decks</h1>
+        <p className="login-subtitle">Sign in to manage your card collection</p>
 
         {error && <div className="error-message">{error}</div>}
 

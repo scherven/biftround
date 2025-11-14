@@ -30,123 +30,159 @@
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
-  max-width: 700px;
+  max-width: 500px;
   margin: 0 auto;
   width: 100%;
 }
 
-.flashcard {
+/* MTG Card Display */
+.mtg-card-display {
   width: 100%;
-  height: 400px;
-  perspective: 1000px;
-  cursor: pointer;
+  max-width: 400px;
   margin-bottom: 40px;
 }
 
-.flashcard-inner {
+.mtg-card-frame {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  border: 3px solid #333;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
 }
 
-.flashcard.flipped .flashcard-inner {
-  transform: rotateY(180deg);
+.mtg-card-display.common .mtg-card-frame {
+  border-color: #333;
 }
 
-.flashcard-front,
-.flashcard-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.mtg-card-display.uncommon .mtg-card-frame {
+  border-color: #6c757d;
+  background: linear-gradient(135deg, #e8e8e8 0%, #d3d3d3 100%);
+}
+
+.mtg-card-display.rare .mtg-card-frame {
+  border-color: #ffc107;
+  background: linear-gradient(135deg, #fff9e6 0%, #ffe6b3 100%);
+}
+
+.mtg-card-display.mythic-rare .mtg-card-frame {
+  border-color: #dc3545;
+  background: linear-gradient(135deg, #ffe6e6 0%, #ffcccc 100%);
+}
+
+.card-header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 40px;
-  box-sizing: border-box;
+  margin-bottom: 16px;
 }
 
-.flashcard-back {
-  transform: rotateY(180deg);
-  background: #667eea;
+.card-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+.mana-cost-display {
+  font-size: 16px;
+  font-weight: 700;
+  color: #555;
+  background: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 2px solid #333;
+}
+
+.card-image-placeholder {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  height: 200px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #333;
+}
+
+.image-text {
   color: white;
+  font-size: 18px;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.card-label {
+.card-type-bar {
+  background: #fff;
+  padding: 10px 12px;
+  border-top: 3px solid #333;
+  border-bottom: 3px solid #333;
+  margin-bottom: 12px;
   font-size: 14px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
-  color: #667eea;
+  color: #333;
 }
 
-.flashcard-back .card-label {
-  color: rgba(255, 255, 255, 0.8);
+.card-text-area {
+  background: #fff;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #000;
+  min-height: 80px;
+  border: 2px solid #333;
 }
 
-.card-text {
-  font-size: 24px;
-  line-height: 1.5;
-  text-align: center;
-  word-wrap: break-word;
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
 }
 
-.flip-hint {
-  margin-top: 30px;
-  font-size: 12px;
-  color: #999;
-  font-style: italic;
+.card-pt-box {
+  background: #fff;
+  border: 3px solid #333;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #000;
 }
 
-.flashcard-back .flip-hint {
-  color: rgba(255, 255, 255, 0.6);
+.card-rarity-symbol {
+  background: #333;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  border: 2px solid #000;
 }
 
 .test-navigation {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   justify-content: center;
+  align-items: center;
   width: 100%;
 }
 
 .test-navigation button {
-  min-width: 120px;
+  min-width: 140px;
 }
 
-.test-complete {
-  text-align: center;
-  padding: 60px 20px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.test-complete h1 {
-  font-size: 42px;
-  margin: 0 0 20px 0;
-  color: #333;
-}
-
-.test-complete p {
-  color: #666;
+.card-counter {
   font-size: 18px;
-  margin: 0 0 40px 0;
-}
-
-.test-complete-actions {
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
+  font-weight: 600;
+  color: #333;
+  padding: 0 20px;
 }
 
 .error-state {
@@ -163,3 +199,4 @@
   margin: 0 0 30px 0;
   color: #999;
 }
+

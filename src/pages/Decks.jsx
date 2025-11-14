@@ -90,7 +90,7 @@ function Decks() {
                   </Link>
                   {deck.cards.length > 0 && (
                     <Link to={`/test/${deck.id}`} className="btn btn-primary">
-                      Test
+                      Card Gallery
                     </Link>
                   )}
                 </div>

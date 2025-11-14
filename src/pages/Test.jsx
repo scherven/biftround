@@ -7,8 +7,6 @@ function Test() {
   const { deckId } = useParams();
   const { getDeckById } = useDecks();
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const [showAnswer, setShowAnswer] = useState(false);
-  const [testComplete, setTestComplete] = useState(false);
 
   const deck = getDeckById(deckId);
 
@@ -29,7 +27,7 @@ function Test() {
     return (
       <div className="test-container">
         <div className="error-state">
-          <h2>No cards to test</h2>
+          <h2>No cards in deck</h2>
           <p>Add some cards to this deck first!</p>
           <Link to={`/deck/${deckId}`} className="btn btn-primary">
             Add Cards
@@ -41,53 +39,21 @@ function Test() {
 
   const currentCard = deck.cards[currentCardIndex];
 
-  const handleFlipCard = () => {
-    setShowAnswer(!showAnswer);
-  };
-
   const handleNextCard = () => {
     if (currentCardIndex < deck.cards.length - 1) {
       setCurrentCardIndex(currentCardIndex + 1);
-      setShowAnswer(false);
     } else {
-      setTestComplete(true);
+      setCurrentCardIndex(0); // Loop back to first card
     }
   };
 
   const handlePreviousCard = () => {
     if (currentCardIndex > 0) {
       setCurrentCardIndex(currentCardIndex - 1);
-      setShowAnswer(false);
+    } else {
+      setCurrentCardIndex(deck.cards.length - 1); // Loop to last card
     }
   };
-
-  const handleRestart = () => {
-    setCurrentCardIndex(0);
-    setShowAnswer(false);
-    setTestComplete(false);
-  };
-
-  if (testComplete) {
-    return (
-      <div className="test-container">
-        <div className="test-complete">
-          <h1>🎉 Test Complete!</h1>
-          <p>You've reviewed all {deck.cards.length} cards in this deck.</p>
-          <div className="test-complete-actions">
-            <button onClick={handleRestart} className="btn btn-primary">
-              Test Again
-            </button>
-            <Link to={`/deck/${deckId}`} className="btn btn-secondary">
-              View Deck
-            </Link>
-            <Link to="/decks" className="btn btn-secondary">
-              All Decks
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="test-container">
@@ -102,17 +68,41 @@ function Test() {
       </header>
 
       <div className="test-content">
-        <div className={`flashcard ${showAnswer ? 'flipped' : ''}`} onClick={handleFlipCard}>
-          <div className="flashcard-inner">
-            <div className="flashcard-front">
-              <div className="card-label">Question</div>
-              <div className="card-text">{currentCard.question}</div>
-              <div className="flip-hint">Click to flip</div>
+        <div className={`mtg-card-display ${currentCard.rarity?.toLowerCase().replace(' ', '-')}`}>
+          <div className="mtg-card-frame">
+            <div className="card-header">
+              <h2 className="card-name">{currentCard.name}</h2>
+              {currentCard.manaCost && (
+                <div className="mana-cost-display">{currentCard.manaCost}</div>
+              )}
             </div>
-            <div className="flashcard-back">
-              <div className="card-label">Answer</div>
-              <div className="card-text">{currentCard.answer}</div>
-              <div className="flip-hint">Click to flip back</div>
+            
+            <div className="card-image-placeholder">
+              {/* Placeholder for card artwork */}
+              <div className="image-text">Card Artwork</div>
+            </div>
+
+            <div className="card-type-bar">
+              {currentCard.type}
+            </div>
+
+            {currentCard.text && (
+              <div className="card-text-area">
+                {currentCard.text}
+              </div>
+            )}
+
+            <div className="card-footer">
+              {(currentCard.power !== undefined || currentCard.toughness !== undefined) && (
+                <div className="card-pt-box">
+                  {currentCard.power}/{currentCard.toughness}
+                </div>
+              )}
+              {currentCard.rarity && (
+                <div className="card-rarity-symbol" title={currentCard.rarity}>
+                  {currentCard.rarity.charAt(0)}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -120,24 +110,20 @@ function Test() {
         <div className="test-navigation">
           <button
             onClick={handlePreviousCard}
-            disabled={currentCardIndex === 0}
             className="btn btn-secondary"
           >
-            ← Previous
+            ← Previous Card
           </button>
-          
-          <button
-            onClick={handleFlipCard}
-            className="btn btn-primary"
-          >
-            {showAnswer ? 'Show Question' : 'Show Answer'}
-          </button>
+
+          <div className="card-counter">
+            {currentCardIndex + 1} / {deck.cards.length}
+          </div>
 
           <button
             onClick={handleNextCard}
             className="btn btn-secondary"
           >
-            {currentCardIndex === deck.cards.length - 1 ? 'Finish' : 'Next →'}
+            Next Card →
           </button>
         </div>
       </div>
